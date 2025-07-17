@@ -13,9 +13,8 @@ app.get('/', (req, res) => {
         res.render("index", {files:files});
     })
 
-    
-    
 })
+
 
 app.post('/create', (req, res) => {
     fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`, req.body.description, function(err){
@@ -30,6 +29,9 @@ app.get('/file/:filename', (req, res) => {
         res.render("show", {filename: req.params.filename, data: data.toString()})
     })
 })
+
+
+
 
 app.listen(3000, function(){
     console.log("listening on port 3000")
